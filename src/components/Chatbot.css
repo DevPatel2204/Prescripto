@@ -1,0 +1,191 @@
+/* Chatbot.css */
+
+/* --- Popover Container & Trigger --- */
+.chatbot-trigger-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff; /* Primary button color */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Make it circular */
+    width: 60px; /* Adjust size as needed */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 999; /* Ensure it's above most content */
+  }
+  
+  .chatbot-trigger-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: scale(1.05);
+  }
+  
+  .chatbot-popover-window {
+    position: fixed;
+    bottom: 90px; /* Position above the trigger button (60px height + 10px spacing) */
+    right: 20px;
+    width: 350px; /* Slightly wider */
+    height: 500px; /* Taller */
+    background-color: #ffffff;
+    border-radius: 12px; /* Softer corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Important for border-radius */
+    z-index: 1000; /* Ensure it's above the trigger */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0; /* Start hidden */
+    transform: translateY(10px); /* Start slightly lower */
+    pointer-events: none; /* Prevent interaction when hidden */
+  }
+  
+  .chatbot-popover-window.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  
+  /* --- Chat Content Styling --- */
+  .chatbot-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Fill the popover window */
+  }
+  
+  .chatbot-header {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    border-top-left-radius: 12px; /* Match container */
+    border-top-right-radius: 12px; /* Match container */
+  }
+  
+  .chatbot-header-title {
+    font-size: 1.1em;
+  }
+  
+  .chatbot-close-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px; /* Easier click target */
+    line-height: 0; /* Prevent extra space */
+  }
+  .chatbot-close-button:hover {
+      opacity: 0.8;
+  }
+  
+  
+  .chat-messages {
+    flex-grow: 1;
+    padding: 15px; /* More padding */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Spacing between messages */
+    background-color: #f8f9fa; /* Light background for messages */
+  }
+  
+  /* Custom Scrollbar (Optional - Webkit browsers) */
+  .chat-messages::-webkit-scrollbar {
+    width: 6px;
+  }
+  .chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  .chat-messages::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+  }
+  .chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+  }
+  
+  
+  .message {
+    padding: 10px 15px;
+    border-radius: 18px; /* More rounded bubbles */
+    max-width: 80%; /* Prevent bubbles from being too wide */
+    word-wrap: break-word; /* Ensure long words break */
+    line-height: 1.4;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  }
+  
+  .message.user {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 6px; /* Slightly flatten corner */
+  }
+  
+  .message.bot {
+    background-color: #e9ecef; /* Lighter grey for bot */
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 6px; /* Slightly flatten corner */
+  }
+  
+  .message.error {
+      background-color: #f8d7da; /* Reddish background for errors */
+      color: #721c24; /* Dark red text */
+      border: 1px solid #f5c6cb;
+  }
+  
+  .input-area {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #dee2e6; /* Softer border */
+    background-color: #ffffff;
+    gap: 10px; /* Space between input and button */
+    align-items: center; /* Vertically align items */
+  }
+  
+  .input-field {
+    flex-grow: 1;
+    padding: 10px 15px; /* More padding */
+    border-radius: 20px; /* Pill shape */
+    border: 1px solid #ced4da;
+    font-size: 1em;
+    outline: none; /* Remove default focus outline */
+    transition: border-color 0.2s ease;
+  }
+  
+  .input-field:focus {
+    border-color: #80bdff; /* Highlight on focus */
+  }
+  
+  .send-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Circular button */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0; /* Prevent button from shrinking */
+    transition: background-color 0.3s ease;
+  }
+  
+  .send-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .send-button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+  }
