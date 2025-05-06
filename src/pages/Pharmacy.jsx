@@ -5,7 +5,9 @@ import './PharmacyPage.css';
 
 // --- Configuration ---
 // Adjust the base URL to where your backend is running
-const API_BASE_URL = 'http://localhost:4000/api/pharmacies'; // Or your actual backend URL
+const backendUrl = import.meta.env.VITE_BACKEND_URL
+
+const API_BASE_URL = backendUrl + '/api/pharmacies'; // Or your actual backend URL
 
 // --- API Interaction Logic ---
 const handleApiResponse = async (response) => {
